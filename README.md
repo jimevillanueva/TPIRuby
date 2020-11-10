@@ -109,3 +109,6 @@ puede requerir algún trabajo adicional de tu parte.
   * `lib/rn/version.rb` define la versión de la herramienta, utilizando [SemVer](https://semver.org/lang/es/).
 * `bin/`: directorio donde reside cualquier archivo ejecutable, siendo el más notorio `rn`
   que se utiliza como punto de entrada para el uso de la herramienta.
+  
+  ruby bin/rn notes -h
+

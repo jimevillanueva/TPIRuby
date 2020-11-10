@@ -15,8 +15,13 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar creación de la nota con título '#{title}' (en el libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
-        end
+          RN::Notes.create(title,book)
+          if(book.nil?)
+            warn "Se creo la nota con título '#{title}' (en el libro 'global') en el cajon de notas ubicado en #{Dir.home}/.my_rns"
+          else
+            warn "Se creo la nota con título '#{title}' (en el libro '#{book}') en el cajon de notas ubicado en #{Dir.home}/.my_rns"
+          end
+          end
       end
 
       class Delete < Dry::CLI::Command
@@ -33,7 +38,13 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar borrado de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          if(book.nil?)
+            RN::Notes.delete("#{Dir.home}/.my_rns/global/#{title}")
+            warn "Se elimino la nota con título '#{title}' (del libro 'global').\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          else
+          RN::Notes.delete("#{Dir.home}/.my_rns/#{book}/#{title}")
+          warn "Se elimino la nota con título '#{title}' (del libro '#{book}').\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          end
         end
       end
 
@@ -51,7 +62,13 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar modificación de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          if (book.nil?)
+            RN::Notes.edit("#{Dir.home}/.my_rns/global/#{title}")
+            warn "Se momdifico la nota con título '#{title}' (en el libro 'global') \n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          else
+            RN::Notes.edit("#{Dir.home}/.my_rns/#{book}/#{title}")
+            warn "Se momdifico la nota con título '#{title}' (en el libro '#{book}') \n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          end
         end
       end
 
@@ -70,7 +87,13 @@ module RN
 
         def call(old_title:, new_title:, **options)
           book = options[:book]
-          warn "TODO: Implementar cambio del título de la nota con título '#{old_title}' hacia '#{new_title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          if (book.nil?)
+            RN::Notes.rename("#{Dir.home}/.my_rns/global/#{old_title}", "#{Dir.home}/.my_rns/global/#{new_title}")
+            warn "Se cambio del título de la nota con título '#{old_title}' hacia '#{new_title}' (del libro 'global'). \n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          else
+            RN::Notes.rename("#{Dir.home}/.my_rns/#{book}/#{old_title}", "#{Dir.home}/.my_rns/#{book}/#{new_title}")
+            warn "Se cambio del título de la nota con título '#{old_title}' hacia '#{new_title}' (del libro '#{book}'). \n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          end
         end
       end
 
@@ -90,7 +113,12 @@ module RN
         def call(**options)
           book = options[:book]
           global = options[:global]
-          warn "TODO: Implementar listado de las notas del libro '#{book}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          RN::Notes.list(book,global)
+          if(book)
+            warn "Listado de las notas del libro '#{book}'.\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          else
+            warn "Listado de las notas del libro 'global'.\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          end
         end
       end
 
@@ -108,8 +136,14 @@ module RN
 
         def call(title:, **options)
           book = options[:book]
-          warn "TODO: Implementar vista de la nota con título '#{title}' (del libro '#{book}').\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
-        end
+          if (book.nil?)
+            RN::Notes.show("#{Dir.home}/.my_rns/global/#{title}")
+            warn "Esta es la vista de la nota con título '#{title}' (del libro 'global').\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          else
+            RN::Notes.show("#{Dir.home}/.my_rns/#{book}/#{title}")
+            warn "Esta es la vista de la nota con título '#{title}' (del libro '#{book}').\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+          end
+       end
       end
     end
   end

@@ -2,7 +2,7 @@ module RN
   module Commands
     module Books
       class Create < Dry::CLI::Command
-        desc 'Create a book'
+        desc 'Create a book' #descripcion que aparece en consolo cuando se listan los comandos
 
         argument :name, required: true, desc: 'Name of the book'
 
@@ -12,7 +12,8 @@ module RN
         ]
 
         def call(name:, **)
-          warn "TODO: Implementar creación del cuaderno de notas con nombre '#{name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          RN::Books.create("#{Dir.home}/.my_rns/#{name}")
+          warn "se creo el cuaderno llamado '#{name}'.\n en el cajon de notas ubicado en #{Dir.home}/.my_rns/#{name}."
         end
       end
 
@@ -30,7 +31,13 @@ module RN
 
         def call(name: nil, **options)
           global = options[:global]
-          warn "TODO: Implementar borrado del cuaderno de notas con nombre '#{name}' (global=#{global}).\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          if(global)
+            RN::Books.delete("#{Dir.home}/.my_rns/global")
+            warn "Se elimino el cuaderno de notas con nombre 'global'.\n."
+          else
+            RN::Books.delete("#{Dir.home}/.my_rns/#{name}")
+            warn "Se elimino el cuaderno de notas con nombre '#{name}'.\n."
+          end
         end
       end
 
@@ -42,12 +49,13 @@ module RN
         ]
 
         def call(*)
-          warn "TODO: Implementar listado de los cuadernos de notas.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          RN::Books.list
+          warn "listado de los cuadernos de notas.\n"
         end
       end
 
       class Rename < Dry::CLI::Command
-        desc 'Rename a book'
+        desc 'Rename a book' 
 
         argument :old_name, required: true, desc: 'Current name of the book'
         argument :new_name, required: true, desc: 'New name of the book'
@@ -59,7 +67,8 @@ module RN
         ]
 
         def call(old_name:, new_name:, **)
-          warn "TODO: Implementar renombrado del cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\nPodés comenzar a hacerlo en #{__FILE__}:#{__LINE__}."
+          RN::Books.rename("#{Dir.home}/.my_rns/#{old_name}", "#{Dir.home}/.my_rns/#{new_name}")
+          warn "Se renombro el cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\n."
         end
       end
     end

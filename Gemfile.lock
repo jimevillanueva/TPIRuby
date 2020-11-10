@@ -16,3 +16,34 @@ RUBY VERSION
 
 BUNDLED WITH
    2.1.4
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    colorputs (0.2.3)
+    pastel (0.8.0)
+      tty-color (~> 0.5)
+    tty-color (0.6.0)
+    tty-cursor (0.7.1)
+    tty-editor (0.6.0)
+      tty-prompt (~> 0.22)
+    tty-prompt (0.22.0)
+      pastel (~> 0.8)
+      tty-reader (~> 0.8)
+    tty-reader (0.8.0)
+      tty-cursor (~> 0.7)
+      tty-screen (~> 0.8)
+      wisper (~> 2.0)
+    tty-screen (0.8.1)
+    wisper (2.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  colorputs
+  tty-editor (~> 0.6.0)
+
+BUNDLED WITH
+   2.1.4
+
