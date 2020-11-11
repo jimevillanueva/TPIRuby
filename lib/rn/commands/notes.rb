@@ -16,11 +16,6 @@ module RN
         def call(title:, **options)
           book = options[:book]
           RN::Notes.create(title,book)
-          if(book.nil?)
-            warn "Se creo la nota con título '#{title}' (en el libro 'global') en el cajon de notas ubicado en #{Dir.home}/.my_rns"
-          else
-            warn "Se creo la nota con título '#{title}' (en el libro '#{book}') en el cajon de notas ubicado en #{Dir.home}/.my_rns"
-          end
           end
       end
 

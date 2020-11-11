@@ -12,7 +12,7 @@ module RN
         ]
 
         def call(name:, **)
-          RN::Books.create("#{Dir.home}/.my_rns/#{name}")
+          RN::Books.create(name)
           warn "se creo el cuaderno llamado '#{name}'.\n en el cajon de notas ubicado en #{Dir.home}/.my_rns/#{name}."
         end
       end
@@ -33,10 +33,10 @@ module RN
           global = options[:global]
           if(global)
             RN::Books.delete("#{Dir.home}/.my_rns/global")
-            warn "Se elimino el cuaderno de notas con nombre 'global'.\n."
+            warn "Se elimino el cuaderno de notas con nombre 'global'."
           else
             RN::Books.delete("#{Dir.home}/.my_rns/#{name}")
-            warn "Se elimino el cuaderno de notas con nombre '#{name}'.\n."
+            warn "Se elimino el cuaderno de notas con nombre '#{name}'."
           end
         end
       end
