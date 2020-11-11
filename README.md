@@ -1,14 +1,14 @@
 INFORMACION ACERCA DE ESTRUCTURAS Y FORMATOS
 
 Clase NOTES:
-    cree una clase Note.rb la cual contiene la logica que resuelve las distintas operaciones que se desean realizar sobre las notas.
-    Estas son:
-        – Creación de una nota.                                   => se debe indicar el titulo de la nota
-        – Listado de notas, que puede o no filtrarse por cuaderno. 
-        – Vista de una nota.                                      => se debe indicar el titulo de la nota
-        – Modificación del título una nota.                       => se debe indicar el titulo original y el nuevo
-        – Modificación del contenido una nota.                    => se debe indicar el titulo de la nota
-        – Borrado de una nota.                                    => se debe indicar el titulo de la nota
+cree una clase Note.rb la cual contiene la logica que resuelve las distintas operaciones que se desean realizar sobre las notas.
+Estas son:
+    – Creación de una nota.                                   => se debe indicar el titulo de la nota
+    – Listado de notas, que puede o no filtrarse por cuaderno. 
+    – Vista de una nota.                                      => se debe indicar el titulo de la nota
+    – Modificación del título una nota.                       => se debe indicar el titulo original y el nuevo
+    – Modificación del contenido una nota.                    => se debe indicar el titulo de la nota
+    – Borrado de una nota.                                    => se debe indicar el titulo de la nota
         
     Para ello, realice distintos metodos de la clase los cuales reciben como argumento el nombre de la nota, y opcionalmente, un cuaderno. En el ultimo caso, esto 
     debe hacerce a traves de --book cuaderno. 
