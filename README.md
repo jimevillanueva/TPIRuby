@@ -1,7 +1,6 @@
 INFORMACION ACERCA DE ESTRUCTURAS Y FORMATOS
 
 Clase NOTES:
-
 cree una clase Note.rb la cual contiene la logica que resuelve las distintas operaciones que se desean realizar sobre las notas.
 Estas son:
     – Creación de una nota.                                   => se debe indicar el titulo de la nota
