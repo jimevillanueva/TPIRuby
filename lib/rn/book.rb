@@ -10,7 +10,6 @@ module RN
 
             def self.create(name)
                 n = self.name?(name)
-                puts n
                 if(n == false)
                     puts "UPS! ----------------- \n - El nombre del cuaderno no cumple con el formato.\n - No puede comenzar ni finalizar con espacios, ni contener caracteres especiales \n - Intente ingresando uno que contenga letras minusculas, mayusculas, numeros y/o espacios."
                 else
@@ -44,5 +43,16 @@ module RN
                end
             end
 
+            def self.export(book)
+                if (Dir.exist?("#{Dir.home}/.my_rns/#{book}"))
+                    if (book.nil?)
+                        Dir.each_child("#{Dir.home}/.my_rns") {|dir| Dir.each_child("#{Dir.home}/.my_rns/#{dir}") { |note| RN::Notes.exportar("#{Dir.home}/.my_rns/#{dir}/#{note}") }}
+                    else
+                        Dir.each_child("#{Dir.home}/.my_rns/#{book}") {|filename| RN::Notes.exportar("#{Dir.home}/.my_rns/#{book}/#{filename}") }
+                    end
+                else
+                    warn "UPS! ---------------- \n No existe un cuaderno con ese nombre, intente ingresando otro"
+                end
+            end
         end
 end

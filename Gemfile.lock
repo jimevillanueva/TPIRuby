@@ -1,28 +1,40 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (6.0.3.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 0.7, < 2)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+      zeitwerk (~> 2.2, >= 2.2.2)
+    colorputs (0.2.3)
     concurrent-ruby (1.1.7)
     dry-cli (0.6.0)
       concurrent-ruby (~> 1.0)
-
-PLATFORMS
-  ruby
-
-DEPENDENCIES
-  dry-cli (~> 0.6)
-
-RUBY VERSION
-   ruby 2.7.2p137
-
-BUNDLED WITH
-   2.1.4
-
-GEM
-  remote: https://rubygems.org/
-  specs:
-    colorputs (0.2.3)
+    i18n (1.8.5)
+      concurrent-ruby (~> 1.0)
+    iniparser (1.0.1)
+    kramdown (2.3.0)
+      rexml
+    logutils (0.6.1)
+    markdown (1.2.0)
+      kramdown (>= 1.5.0)
+      props (>= 1.1.2)
+      textutils (>= 0.10.0)
+    minitest (5.13.0)
     pastel (0.8.0)
       tty-color (~> 0.5)
+    props (1.2.0)
+      iniparser (>= 0.1.0)
+    redcarpet (3.5.0)
+    rexml (3.2.3)
+    rubyzip (2.3.0)
+    textutils (1.4.0)
+      activesupport
+      logutils (>= 0.6.1)
+      props (>= 1.1.2)
+      rubyzip (>= 1.0.0)
+    thread_safe (0.3.6)
     tty-color (0.6.0)
     tty-cursor (0.7.1)
     tty-editor (0.6.0)
@@ -35,15 +47,23 @@ GEM
       tty-screen (~> 0.8)
       wisper (~> 2.0)
     tty-screen (0.8.1)
+    tzinfo (1.2.8)
+      thread_safe (~> 0.1)
     wisper (2.0.1)
+    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   colorputs
+  dry-cli (~> 0.6)
+  markdown (~> 1.2)
+  redcarpet
   tty-editor (~> 0.6.0)
+
+RUBY VERSION
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4
-

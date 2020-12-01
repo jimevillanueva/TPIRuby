@@ -71,6 +71,28 @@ module RN
           warn "Se renombro el cuaderno de notas con nombre '#{old_name}' para que pase a llamarse '#{new_name}'.\n."
         end
       end
+      
+      class Export < Dry::CLI::Command
+        desc 'Export all notes of a book'
+
+        option :book, type: :string, desc: 'Book'
+
+        example [
+          '--book "My book"     # Export all notes in the book "My book"',
+          '--book global        # Export all notes in the global book'
+        ]
+
+        def call(**options)
+          book = options[:book]
+          RN::Books.export(book)
+          if (book.nil?)
+            warn "Se exportaron a formato HTML todas las notas de todos los cuadernos del cajon de notas"
+          else
+            warn "Se exportaron a formato HTML todas las notas del cuaderno '#{book}' del cajon de notas"
+          end
+        end
+      end
+
     end
   end
 end

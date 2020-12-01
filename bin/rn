@@ -14,3 +14,6 @@ require 'rn'
 
 # Ejecuta, utilizando la gema dry-cli, los comandos que permiten utilizar la herramienta
 Dry::CLI.new(RN::Commands).call
+
+require 'redcarpet'
+

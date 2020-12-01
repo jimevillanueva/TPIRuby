@@ -140,6 +140,24 @@ module RN
           end
        end
       end
+
+       class Export < Dry::CLI::Command
+        desc 'Export a note'
+
+        argument :title, required: true, desc: 'Title of the note'
+        option :book, type: :string, desc: 'Book'
+
+        example [
+          'todo                        # Export a note titled "todo" in the global book',
+          '"New note" --book "My book" # Export a note titled "New note" in the book "My book"',
+          'thoughts --book Memoires    # Export a note titled "thoughts" in the book "Memoires"',
+        ]
+
+        def call(title:, **options)
+          book = options[:book]
+          RN::Notes.export(title,book)
+        end
+      end
     end
   end
 end

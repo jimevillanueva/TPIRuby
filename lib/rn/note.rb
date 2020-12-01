@@ -28,7 +28,7 @@ module RN
                         if (!Dir.exist?("#{Dir.home}/.my_rns/#{book}")) # => si no existe el cuaderno
                         return warn "UPS! ----------------- \n No existe un cuaderno con ese nombre. \n Intente ingresando otro nombre o cree el cuaderno que desea"
                         else
-                             t = "#{Dir.home}/.my_rns/#{book}/#{title}"
+                             t = "#{Dir.home}/.my_rns/#{book}/#{title}.rn"
                         end
                     end
                     if (File.exist?(t)) # => si ya existe una nota con ese nombre
@@ -81,5 +81,40 @@ module RN
                     puts "UPS! ----------------- \n No existe una nota con ese nombre, intente ingresando otro"
                 end
             end
-        end
+
+            def self.exportar(title)
+                if(File.exist?(title))
+                    renderer = Redcarpet::Render::HTML.new(no_links: true, hard_wrap: true)
+                    markdown = Redcarpet::Markdown.new(renderer, extensions = {})
+                    mr = markdown.render(File.read("#{title}"))
+                    t = "#{title}Export.html"
+                    File.new(t, "w+")
+                    File.open(t, "w") { |f| f.write mr }
+                    return true
+                else
+                    return false
+                end
+            end
+
+            def self.export(title,book)
+            if (book.nil?)
+                t = exportar("#{Dir.home}/.my_rns/global/#{title}")
+                puts t
+                if (t == false)
+                    puts "UPS! ----------------- \n No existe una nota con ese nombre, intente ingresando otro"
+                else
+                    warn "Se exporto a formato HTML la nota con nombre '#{title}' del cuaderno 'global'.\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+                end
+            else 
+                t = exportar("#{Dir.home}/.my_rns/#{book}/#{title}")
+                if (t == false)
+                    puts "UPS! ----------------- \n No existe una nota con ese nombre, intente ingresando otro"
+                else
+                    warn "Se exporto a formato HTML la nota con nombre '#{title}' del cuaderno #{book}.\n del cajon de notas ubicado en #{Dir.home}/.my_rns"
+                end
+            end              
+            
+            end
+        
+    end
 end
