@@ -41,7 +41,7 @@ Clase BOOKS:
     
 cree una clase Book.rb la cual contiene la logica que resuelve las distintas operaciones que se desean realizar sobre los cuadernos.Estas son:
 – Creacion de un cuadernos de notas.        => se indica el nombre del cuaderno
-– Listado de los cuadernos de notas.  
+– Listado de los cuadernos de notas. 
 – Renombrado de un cuaderno.                => se indica el nombre original del cuaderno y el nuevo
 – Borrado de un cuaderno.                   => se indica el nombre del cuaderno
 
@@ -56,3 +56,20 @@ En el caso de eliminar un cuaderno, este se eliminara junto todas las notas que 
       * rn books delete [NAME]                             # Delete a book
       * rn books list                                      # List books
       * rn books rename OLD_NAME NEW_NAME                  # Rename a book
+      
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Para la segunda entrega utilice Markdown como formato de texto plano que permite agregar markup para especificar elementos de texto rico. 
+Para exportar el archivo, elegi la gemma Redcarpet. Y elegi el formato HTML para la exportacion. 
+Se agregan entonces los siguientes comandos en la clase NOTE y en la clase BOOK:
+
+NOTE 
+	* rn notes export TITLE 			    # Export a note
+Es necesario que se le indique el nombre de una nota. 
+Se le puede indicar un cuaderno a traves de la opcion --book nombreDelCuaderno (opcional).
+En caso de no indicarle un cuaderno, esta se busca en el cuaderno global del cajon de notas. 
+
+BOOK
+	* rn books export 	 			    # Export all notes of a book
+Se le puede indicar el nombre de un cuaderno para exportar todas las notas del mismo (a traves de la opcion --book nombreCuaderno)
+Si no se indica un nombre, se exportan todas las notas de todos los cuadernos que se encuentran en el cajon de notas.
