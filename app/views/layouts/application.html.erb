@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MisNotas</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+
+  <body>
+  <% if notice %>
+  <p class="alert alert-success"> <%= notice %> </p>
+  <% end %>
+  <% if alert %>
+  <p class="alert alert-danger"> <%= alert %> </p>
+  <% end %>
+  <nav class="nav bg-light">
+  <% if user_signed_in? %>
+  <li style="padding:2px 95px;"> <h3> Bienvenido <%= current_user.email %></h3>
+  <li><%= link_to('Home', root_path)%></li>
+  <li><%= link_to('Mis cuadernos', books_path(:user_id => current_user.id)) %></li>
+  <li><%= link_to('Crear cuaderno', new_book_path) %></li>
+  <li> <%= link_to('Cerrar Sesion', destroy_user_session_path, method: :delete) %> </li>
+  <% end %>
+</nav>
+    <%= yield %>
+  </body>
+</html>

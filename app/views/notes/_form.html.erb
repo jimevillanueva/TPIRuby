@@ -1,0 +1,20 @@
+<div style="display:inline-block">
+<% @book = Book.find(params[:book_id])%>
+<%= form_with(model: @note, url: note_update_path(@book.id, @note), method: "patch") do |form| %>
+<div class="field">
+    <div class="mb-3">
+      <%= form.label :title, :class => "form-label"%>
+      <%= form.text_field :title, :class => "form-control"%>
+    </div>
+    <div class="container box p-4">
+      <div class="mb-3">
+        <%= form.label :content, :class => "form-label" %>
+        <%= form.rich_text_area :content %>
+      </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= form.submit  :class => " btn btn-dark btn-block" %>
+  </div>
+<% end %>
+</div>

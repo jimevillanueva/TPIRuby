@@ -1,0 +1,7 @@
+<%= form_with(model:@book, local:true) do |f| %>
+    <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+    </div>
+    <%= f.submit class: "btn btn-primary text-uppercase"%>
+    <% end %>
