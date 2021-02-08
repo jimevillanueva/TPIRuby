@@ -1,0 +1,6 @@
+<div style="display:inline-block">
+<% @book = Book.find(params[:book_id]) %>
+<h1> Notas del cuaderno <%= @book.title %> </h1> 
+<%= render @book.notes %>
+<%= link_to "Agregar nota", new_notes_path(@book) %>
+</div>
