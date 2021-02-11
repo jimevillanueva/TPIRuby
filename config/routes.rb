@@ -14,15 +14,22 @@ Rails.application.routes.draw do
   patch 'books/:book_id/notes/:id', to: 'notes#update', as: :note_update
   delete 'books/:book_id/notes/:id', to: 'notes#destroy', as: :note_delete
 
-  resources :users, only: [:new, :create]
   resources :books do
     resources :notes
   end
 
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: "users/registrations"
+  }
+  devise_scope :user do
+    post 'users/sign_up', to: 'devise/registrations#create'
+end
+
   get 'inicio', to: 'inicio#index'
 
-  devise_scope :user do
+ devise_scope :user do
   get '/users/sign_out' => 'devise/sessions#destroy'
+   
   end
 end

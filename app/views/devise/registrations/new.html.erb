@@ -1,49 +1,29 @@
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-10 col-xl-9 mx-auto">
-        <div class="card card-signin flex-row my-5">
-          <div class="card-img-left d-none d-md-flex">
-             <!-- Background image for card set in CSS! -->
-          </div>
-          <div class="card-body">
-            <h5 class="card-title text-center">Registrarse</h5>
-            <form class="form-signin">
-              <div class="form-label-group">
-              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-                <%= render "devise/shared/error_messages", resource: resource %>
-              
-                <div class="field">
-                  <%= f.label :email %><br />
-                  <%= f.email_field :email, autofocus: true, autocomplete: "email", id:"inputUserame", placeholder:"Email", class: "form-control"  %>
-                </div>
-              
-                <div class="field">
-                <%= f.label :password %>
-                <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-                <% end %><br />
-                <%= f.password_field :password, autocomplete: "new-password", placeholder:"Password", id:"inputPassword" %>
-              </div>
-            
-              <div class="field">
-                <%= f.label :password_confirmation %><br />
-                <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Password", id:"inputConfirmedPassword" %>
-              </div>
-            
-              <div class="actions">
-                <%= f.submit "Registrarme", class: "btn btn-lg btn-primary btn-block text-uppercase" %>
-              </div>
-            <% end %>
+<h2>Sign up</h2>
 
-              <hr>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
 
-              <p> Ya tiene una cuenta? </p>
-              <a class="d-block text-center mt-2 small"> <%= link_to('Iniciar Sesion', new_user_session_path) %> </a>
-            
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
-  <%= render "devise/shared/links" %>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
