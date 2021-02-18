@@ -1,17 +1,6 @@
 class BooksController < ApplicationController
     before_action :find_book, except: [:new, :create, :index]
     before_action :authenticate_user!
-  
-    def crear_global
-      @book = Book.new
-      @book = current_user.books.create(title: "global") 
-      if @book.save
-        redirect_to books_path(:user_id => current_user.id)
-      else
-        render :new
-      end
-    end
-
 
     def index
       @user = User.find(params[:user_id])
@@ -45,7 +34,9 @@ class BooksController < ApplicationController
     end
   
     def destroy
-      @book.destroy
+      if (@book.title != "Global")
+         @book.destroy
+      end
       redirect_to books_path(:user_id => current_user.id)
     end
   
