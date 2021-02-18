@@ -12,6 +12,7 @@ end
   # POST /resource
   def create
     super
+    Book.create(title: "Global", user_id: current_user.id)
   end
 
   # GET /resource/edit
