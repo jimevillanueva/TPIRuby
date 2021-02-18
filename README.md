@@ -13,6 +13,7 @@ A su vez, al listar las notas de un cuaderno en particular, se puede editar o el
 Para ello cree los modelos y los controladores para las Notas, los Cuadernos y los Usuarios. 
 
 Para el manejo de sesiones y validaciones de los usuarios utilice la gema Devise. 
+Y para la exportacion en formato de texto rico de las notas utilice la gema ActionText.
 
 Para ejecutar la aplicacion se debe tener instalado:
 - Ruby
