@@ -25,11 +25,9 @@ class BooksController < ApplicationController
     end
   
     def update
+      if (@book.title != "Global")
       @book.update(title: params[:book][:title])
-      if @book.update
-         redirect_to books_path(:user_id => current_user.id)
-      else
-        render :edit
+      redirect_to books_path(:user_id => current_user.id)
       end
     end
   
